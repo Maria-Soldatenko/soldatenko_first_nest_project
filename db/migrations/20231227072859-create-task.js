@@ -9,21 +9,24 @@ module.exports = {
       },
       value: {
         allowNull: false,
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.STRING,
         validate: {
+          notNull: true,
           notEmpty: true,
         },
       },
-      state: {
+      isCompleted: {
         defaultValue: false,
-        type: Sequelize.DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
+        defaultValue: Date.now(),
         type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
+        defaultValue: Date.now(),
         type: Sequelize.DATE,
       },
     });

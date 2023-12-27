@@ -16,7 +16,7 @@ export class Task extends Model {
 
   @Default(false)
   @Column
-  state: boolean;
+  isCompleted: boolean;
 
   @CreatedAt
   creationDate: Date;
