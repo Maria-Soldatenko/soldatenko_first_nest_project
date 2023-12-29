@@ -14,13 +14,14 @@ export class Task extends Model {
   @Column
   value: string;
 
+  @AllowNull(false)
   @Default(false)
   @Column
   isCompleted: boolean;
 
   @CreatedAt
-  creationDate: Date;
+  createdAt: Date;
 
   @UpdatedAt
-  updatedOn: Date;
+  updatedAt: Date;
 }

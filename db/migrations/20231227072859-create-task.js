@@ -16,6 +16,7 @@ module.exports = {
         },
       },
       isCompleted: {
+        allowNull: false,
         defaultValue: false,
         type: Sequelize.BOOLEAN,
       },
