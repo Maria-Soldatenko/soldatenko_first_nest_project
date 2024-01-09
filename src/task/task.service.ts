@@ -10,7 +10,9 @@ export class TaskService {
   ) {}
 
   getAllTasks(): Promise<Task[]> {
-    return this.taskRepository.findAll();
+    return this.taskRepository.findAll({
+      attributes: ['id', 'value', 'isCompleted'],
+    });
   }
 
   createTask(task: Partial<Task>): Promise<Task> {
