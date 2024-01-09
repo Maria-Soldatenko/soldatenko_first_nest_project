@@ -6,10 +6,10 @@ export class EditPropertiesDto {
   @IsNotEmpty()
   @Transform(({ value }) => value.trim())
   @IsString()
-  value: string;
+  value?: string;
 
   @IsOptional()
   @IsNotEmpty()
   @IsBoolean()
-  isCompleted: boolean;
+  isCompleted?: boolean;
 }

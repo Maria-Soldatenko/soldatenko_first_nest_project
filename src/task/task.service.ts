@@ -21,14 +21,14 @@ export class TaskService {
     const [affectedCount, [affectedTask]] = await this.taskRepository.update(
       task,
       {
-        where: { id: id },
+        where: { id },
         returning: true,
       },
     );
 
     if (affectedCount === 0)
       throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-    else return affectedTask;
+    return affectedTask;
   }
 
   switchStateAll(task: Partial<Task>): void {
@@ -39,7 +39,7 @@ export class TaskService {
 
   async deleteTask(id: number): Promise<void> {
     const affectedCount = await this.taskRepository.destroy({
-      where: { id: id },
+      where: { id },
     });
 
     if (affectedCount === 0)

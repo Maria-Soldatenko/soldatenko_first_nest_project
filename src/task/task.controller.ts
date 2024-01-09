@@ -30,7 +30,7 @@ export class TaskController {
     return this.taskService.createTask(data);
   }
 
-  @Patch('/edit/:id')
+  @Patch('/:id')
   editProperties(
     @Param('id', ParseIntPipe) id: number,
     @Body() data: EditPropertiesDto,
@@ -43,13 +43,13 @@ export class TaskController {
     return this.taskService.switchStateAll(data);
   }
 
-  @Delete('/specific/:id')
-  deleteTask(@Param('id', ParseIntPipe) id: number) {
-    return this.taskService.deleteTask(id);
-  }
-
   @Delete('/completed')
   deleteAllCompleted() {
     return this.taskService.deleteAllCompleted();
+  }
+
+  @Delete('/:id')
+  deleteTask(@Param('id', ParseIntPipe) id: number) {
+    return this.taskService.deleteTask(id);
   }
 }
