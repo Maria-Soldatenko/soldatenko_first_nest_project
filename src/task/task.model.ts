@@ -14,7 +14,6 @@ export class Task extends Model {
   @Column
   value: string;
 
-  @AllowNull(false)
   @Default(false)
   @Column
   isCompleted: boolean;

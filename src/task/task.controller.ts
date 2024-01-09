@@ -8,11 +8,13 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+
+import { CreateTaskDto } from '../dto/create-task.dto';
+import { EditPropertiesDto } from '../dto/edit-properties.dto';
+import { SwitchStateAll } from '../dto/switch-state-all.dto';
+
 import { TaskService } from './task.service';
 import { Task } from './task.model';
-import { CreateTaskDto } from 'src/dto/create-task.dto';
-import { EditPropertiesDto } from 'src/dto/edit-properties.dto';
-import { SwitchStateAll } from 'src/dto/switch-state-all.dto';
 
 @Controller('tasks')
 export class TaskController {
@@ -28,7 +30,7 @@ export class TaskController {
     return this.taskService.createTask(data);
   }
 
-  @Patch(':id')
+  @Patch('/edit/:id')
   editProperties(
     @Param('id', ParseIntPipe) id: number,
     @Body() data: EditPropertiesDto,
@@ -41,12 +43,12 @@ export class TaskController {
     return this.taskService.switchStateAll(data);
   }
 
-  @Delete(':id')
+  @Delete('/specific/:id')
   deleteTask(@Param('id', ParseIntPipe) id: number) {
     return this.taskService.deleteTask(id);
   }
 
-  @Delete()
+  @Delete('/completed')
   deleteAllCompleted() {
     return this.taskService.deleteAllCompleted();
   }
